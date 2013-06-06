@@ -22,7 +22,7 @@
 
   <groupId>com.cloudera.cdk.examples</groupId>
   <artifactId>dataset</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.0</version>
   <packaging>jar</packaging>
 
   <name>CDK Dataset Examples</name>
@@ -45,7 +45,7 @@
     <dependency>
       <groupId>com.cloudera</groupId>
       <artifactId>cdk-data</artifactId>
-      <version>0.2.1-SNAPSHOT</version>
+      <version>0.3.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
