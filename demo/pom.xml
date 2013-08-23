@@ -22,7 +22,7 @@
 
   <groupId>com.cloudera.cdk.examples</groupId>
   <artifactId>demo</artifactId>
-  <version>0.5.1-SNAPSHOT</version>
+  <version>0.6.0</version>
   <packaging>pom</packaging>
 
   <name>demo</name>
@@ -55,12 +55,23 @@
     </repository>
   </repositories>
 
+  <pluginRepositories>
+    <pluginRepository>
+      <id>cdh.repo</id>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+      <name>Cloudera Repositories</name>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
   <build>
     <plugins>
       <plugin>
         <groupId>com.cloudera.cdk</groupId>
         <artifactId>cdk-maven-plugin</artifactId>
-        <version>0.5.1-SNAPSHOT</version>
+        <version>0.6.0</version>
         <configuration>
           <hadoopConfiguration>
             <property>
@@ -93,14 +104,14 @@
             <webapp>
               <groupId>com.cloudera.cdk.examples</groupId>
               <artifactId>demo-logging-webapp</artifactId>
-              <version>0.5.1-SNAPSHOT</version>
+              <version>0.6.0</version>
               <type>war</type>
               <asWebapp>true</asWebapp>
             </webapp>
             <webapp>
               <groupId>com.cloudera.cdk.examples</groupId>
               <artifactId>demo-reports-webapp</artifactId>
-              <version>0.5.1-SNAPSHOT</version>
+              <version>0.6.0</version>
               <type>war</type>
               <asWebapp>true</asWebapp>
             </webapp>
