@@ -29,10 +29,10 @@ public class CreateStagedDataset extends Configured implements Tool {
 
   @Override
   public int run(String[] args) throws Exception {
-    DatasetRepository repo = DatasetRepositories.open("repo:hdfs:/tmp/data");
+    DatasetRepository repo = DatasetRepositories.open("repo:file:/tmp/data");
 
     // where the schema is stored
-    URI schemaURI = URI.create("resources:simple-log.avsc");
+    URI schemaURI = URI.create("resource:simple-log.avsc");
 
     // create a Parquet dataset for long-term storage
     repo.create("logs", new DatasetDescriptor.Builder()
@@ -42,8 +42,8 @@ public class CreateStagedDataset extends Configured implements Tool {
             .year("timestamp", "year")
             .month("timestamp", "month")
             .day("timestamp", "day")
-            .get())
-        .get());
+            .build())
+        .build());
 
     // create an Avro dataset to temporarily hold data
     repo.create("logs-staging", new DatasetDescriptor.Builder()
@@ -51,8 +51,8 @@ public class CreateStagedDataset extends Configured implements Tool {
         .schemaUri(schemaURI)
         .partitionStrategy(new PartitionStrategy.Builder()
             .day("timestamp", "day")
-            .get())
-        .get());
+            .build())
+        .build());
 
     return 0;
   }

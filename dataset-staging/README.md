@@ -81,15 +81,14 @@ persistent dataset. The data in yesterday's partition is no longer being
 written and is safe to move because the partition scheme is now writing today's
 data to the next partition.
 
-The `StagingToPersistentSerial` program moves yesterday's partition by opening
+The `StagingToPersistent` program moves yesterday's partition by opening
 the staging dataset, selecting the partition for yesterday, and then writing
-each record. To avoid duplicating data, the persistent dataset's writer is
-closed last, after the partition is successfully deleted.
+each record in parallel using Crunch.
 
-To run `StagingToPersistentSerial`, run:
+To run `StagingToPersistent`, run:
 
 ```bash
-mvn exec:java -Dexec.mainClass="com.cloudera.cdk.examples.staging.StagingToPersistentSerial"
+mvn exec:java -Dexec.mainClass="com.cloudera.cdk.examples.staging.StagingToPersistent"
 ```
 
 After the move completes, the repository should look like this:
@@ -108,7 +107,3 @@ After the move completes, the repository should look like this:
 Keep in mind that this example uses a day-long partitions to keep the finished
 data in staging (yesterday) separate from the currently appended data (today),
 but a different partition scheme could be used instead.
-
-## To do
-
-* Staging to persistent in parallel - this requires a crunch parquet sink.
